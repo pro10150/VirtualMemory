@@ -1,11 +1,20 @@
 from random import randint
+import tkinter as tk
 
 pageAddressing = []
+H = 500
+W = 800
 
-for i in range(20):
-    rand = randint(0,7)
+root = tk.Tk()
 
-    pageAddressing.insert(i,rand)
+canvas = tk.Canvas(root, height=H,width=W)
+canvas.pack()
+root.mainloop()
 
-
-print(pageAddressing)
+# for i in range(20):
+#     rand = randint(0,7)
+#
+#     pageAddressing.insert(i,rand)
+#
+#
+# print(pageAddressing)

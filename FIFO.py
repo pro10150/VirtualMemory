@@ -3,7 +3,7 @@ from random import randint
 pageAddressing = []
 frameNum = input("Input frame: ")
 frame = []
-pivot = 0;
+pivot = 0
 
 for i in range(20):
     rand = randint(0,7)
