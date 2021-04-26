@@ -5,16 +5,40 @@ pageAddressing = []
 H = 500
 W = 800
 
+
+
 root = tk.Tk()
 
 canvas = tk.Canvas(root, height=H,width=W)
 canvas.pack()
-root.mainloop()
+greet = tk.Label(
+    text="Virtual Memory Simulation"
+)
+greet.place(x=150,y=0)
+greet.config(font=("Open Sans", 30))
+inputFrameText = tk.Label(
+    text="Input Frame Size",
+)
+inputFrameText.place(x=100,y=200)
+inputFrameText.config(font=("Open Sans", 20))
 
-# for i in range(20):
-#     rand = randint(0,7)
-#
-#     pageAddressing.insert(i,rand)
-#
-#
-# print(pageAddressing)
+inputFrame = tk.Entry()
+inputFrame.place(x=400,y=200)
+inputFrame.config(font=("Open Sans", 20))
+
+def testButton():
+    if(inputFrame.get() == ""):
+        print("WTF")
+    else:
+        print(inputFrame.get())
+        
+runButton = tk.Button(
+    text="RUN",
+    height=2,
+    width=10,
+    command=testButton
+)
+runButton.place(x=350, y=270)
+runButton.config(font=("Open Sans", 10))
+
+root.mainloop()
