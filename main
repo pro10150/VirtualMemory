@@ -22,9 +22,12 @@ inputFrameText = tk.Label(
 inputFrameText.place(x=100,y=50)
 inputFrameText.config(font=("Open Sans", 20))
 
-inputFrame = tk.Entry()
+frameSize = tk.StringVar(root)
+frameSize.set(1)
+
+inputFrame = tk.OptionMenu(root, frameSize, 1,2,3,4,5,6,7,8,9,10)
 inputFrame.place(x=350,y=50,width=50)
-inputFrame.config(font=("Open Sans", 20))
+inputFrame.config(font=("Open Sans", 15))
 
 
 variable = tk.StringVar(root)
@@ -37,16 +40,26 @@ w.config(font=("Opens Sans",15))
 
 
 def testButton():
-    if(inputFrame.get() == ""):
-        print("WTF")
-    else:
-        newLabel = tk.Label(
-            text=inputFrame.get()
-        )
-        newLabel.pack()
-        newLabel.pack_forget()
-        print(variable.get())
-        print(inputFrame.get())
+
+    # newLabel = tk.Label(
+    #     text=inputFrame.get()
+    # )
+    # newLabel.pack()
+    # newLabel.pack_forget()
+    print(variable.get())
+    print(frameSize.get())
+    frame = tk.Frame(
+        bg="grey",
+        width=800,
+        height=400
+    )
+    frame.place(y=100)
+    for widgets in frame.winfo_children():
+        widgets.destroy()
+    for i in range(int(frameSize.get())):
+        testLabel = tk.Label(frame,
+                             text="YEET")
+        testLabel.pack()
 
 runButton = tk.Button(
     text="RUN",
