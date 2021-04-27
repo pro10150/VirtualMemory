@@ -19,26 +19,42 @@ greet.config(font=("Open Sans", 30))
 inputFrameText = tk.Label(
     text="Input Frame Size",
 )
-inputFrameText.place(x=100,y=200)
+inputFrameText.place(x=100,y=50)
 inputFrameText.config(font=("Open Sans", 20))
 
 inputFrame = tk.Entry()
-inputFrame.place(x=400,y=200)
+inputFrame.place(x=350,y=50,width=50)
 inputFrame.config(font=("Open Sans", 20))
+
+
+variable = tk.StringVar(root)
+variable.set("FIFO") # default value
+
+w = tk.OptionMenu(root, variable, "FIFO", "OPT", "LRU")
+w.place(x=410,y=50)
+w.config(font=("Opens Sans",15))
+
+
 
 def testButton():
     if(inputFrame.get() == ""):
         print("WTF")
     else:
+        newLabel = tk.Label(
+            text=inputFrame.get()
+        )
+        newLabel.pack()
+        newLabel.pack_forget()
+        print(variable.get())
         print(inputFrame.get())
-        
+
 runButton = tk.Button(
     text="RUN",
-    height=2,
+    height=1,
     width=10,
     command=testButton
 )
-runButton.place(x=350, y=270)
+runButton.place(x=700, y=50)
 runButton.config(font=("Open Sans", 10))
 
 root.mainloop()
