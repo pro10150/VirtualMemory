@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="deb95a1f-ccf4-4623-96fc-cac2744c552e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/OPT.py" beforeDir="false" afterPath="$PROJECT_DIR$/OPT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main" beforeDir="false" afterPath="$PROJECT_DIR$/main" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="58" column="41" lean-forward="true" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+            <state relative-caret-position="208">
+              <caret line="198" column="23" selection-start-line="198" selection-start-column="23" selection-end-line="198" selection-end-column="23" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -39,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OPT.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="364">
+              <caret line="32" column="16" lean-forward="true" selection-start-line="3" selection-end-line="32" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -48,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LRU.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="11" selection-start-line="11" selection-end-line="16" selection-end-column="18" />
+            <state relative-caret-position="676">
+              <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -57,8 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FIFO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="33" column="42" selection-start-line="33" selection-end-line="34" />
+            <state relative-caret-position="338">
+              <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -81,8 +82,8 @@
         <option value="$PROJECT_DIR$/LRU.py" />
         <option value="$PROJECT_DIR$/L.py" />
         <option value="$PROJECT_DIR$/FIFO.py" />
-        <option value="$PROJECT_DIR$/OPT.py" />
         <option value="$PROJECT_DIR$/page.py" />
+        <option value="$PROJECT_DIR$/OPT.py" />
         <option value="$PROJECT_DIR$/main" />
       </list>
     </option>
@@ -115,6 +116,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
@@ -306,15 +308,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LRU.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" selection-start-line="11" selection-end-line="16" selection-end-column="18" />
+        <state relative-caret-position="676">
+          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FIFO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="33" column="42" selection-start-line="33" selection-end-line="34" />
+        <state relative-caret-position="338">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -330,15 +332,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OPT.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="364">
+          <caret line="32" column="16" lean-forward="true" selection-start-line="3" selection-end-line="32" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="58" column="41" lean-forward="true" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+        <state relative-caret-position="208">
+          <caret line="198" column="23" selection-start-line="198" selection-start-column="23" selection-end-line="198" selection-end-column="23" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

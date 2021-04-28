@@ -14,10 +14,10 @@ for i in range(10):
 
 print(processList)
 
-for process in processList:
+for i in processList:
     # rand = randint(0,7)
-    x = frame.count(process)
-    print(process)
+    x = frame.count(i)
+    print(i)
     #print(pivot)
     #print(pivot == int(frameNum))
     if(len(frame) == int(frameNum)):
@@ -28,7 +28,7 @@ for process in processList:
         pivot = int(frameNum) - 6
     if(len(frame) < int(frameNum)):
         if(x == 0):
-            frame.insert(pivot,process)
+            frame.insert(pivot,i)
             pivot = pivot + 1
     print(frame)
 
