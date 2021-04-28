@@ -1,6 +1,5 @@
 from random import randint
 import tkinter as tk
-import time
 
 
 H = 500
@@ -50,7 +49,6 @@ def testButton():
         LRU()
 
 def OPT():
-    pageAddressing = []
     capacity = int(frameSize.get())
     s = []
     pivot = 0
@@ -58,7 +56,6 @@ def OPT():
     pageFaults = 0
     flag = False
     popFlag = False
-    previousS = []
 
     frame = tk.Frame(
         bg="grey",
@@ -83,11 +80,7 @@ def OPT():
     testLabel.config(font=("Open Sans", 15))
 
     for i in processList:
-        # rand = randint(0,7)
         x = s.count(i)
-        # print(i)
-        # print(pivot)
-        # print(pivot == int(frameNum))
         if (len(s) == int(capacity)):
             # print(x == 0)
             if (x == 0):
@@ -103,11 +96,8 @@ def OPT():
                 s.insert(pivot, i)
                 pivot = pivot + 1
                 if popFlag:
-                    print("check")
                     flag = True
                 else:
-                    print("here")
-                    print(s)
                     flag = True
                     pageFaults += 1
             else:
@@ -130,7 +120,6 @@ def OPT():
                                     text="[" + str(s[process]) + "]")
                 testLabel.place(x=X, y=y)
                 y += 20
-                # time.sleep(0.5)
         if flag:
             testLabel = tk.Label(frame,
                             text="M ")
@@ -141,16 +130,13 @@ def OPT():
             testLabel.place(x=X, y=y)
         y = 50
         X += 30
-        # print(s)
         testLabel = tk.Label(frame,
                              text="Page Fault = " + str(pageFaults))
         testLabel.place(x=300, y=200)
         testLabel.config(font=("Open Sans", 15))
-        previousS = s
 
 
 def FIFO():
-    pageAddressing = []
     processList = []
     capacity = int(frameSize.get())
     s = []
@@ -182,11 +168,7 @@ def FIFO():
     testLabel.config(font=("Open Sans", 15))
 
     for i in processList:
-        # rand = randint(0,7)
         x = s.count(i)
-        # print(i)
-        # print(pivot)
-        # print(pivot == int(frameNum))
         if len(s) == int(capacity):
             # print(x == 0)
             if x == 0:
@@ -225,7 +207,6 @@ def FIFO():
                                     text="[" + str(s[process]) + "]")
                 testLabel.place(x=X, y=y)
                 y += 20
-                # time.sleep(0.5)
             if flag:
                 testLabel = tk.Label(frame,
                                      text="H  ")
@@ -236,7 +217,6 @@ def FIFO():
                 testLabel.place(x=X, y=y)
         y = 50
         X += 30
-        # print(s)
     testLabel = tk.Label(frame,
                          text="Page Fault = " + str(pageFaults))
     testLabel.place(x=300, y=200)
@@ -249,7 +229,6 @@ def LRU():
     processList = []
     s = []
     flag = False
-    previousS = []
 
     pageFaults = 0
     capacity = int(frameSize.get())
@@ -257,10 +236,6 @@ def LRU():
     for i in range(10):
         rand = randint(0, 7)
         processList.insert(i, rand)
-
-    # print(processList)
-    # print(variable.get())
-    # print(frameSize.get())
     frame = tk.Frame(
         bg="grey",
         width=810,
@@ -277,12 +252,6 @@ def LRU():
                          text="process list = " + str(processList))
     testLabel.place(x=200, y=10)
     testLabel.config(font=("Open Sans", 15))
-    # if (variable.get() == "FIFO"):
-    #     FIFO()
-    # elif (variable.get() == "OPT"):
-    #     OPT()
-    # else:
-    #     LRU()
     for i in processList:
 
         # If i is not present in currentPages list
@@ -326,7 +295,6 @@ def LRU():
                                      text="[" + str(s[process]) + "]")
                 testLabel.place(x=x, y=y)
                 y += 20
-        # time.sleep(0.5)
             if flag:
                 testLabel = tk.Label(frame,
                                      text="M ")
@@ -338,7 +306,6 @@ def LRU():
 
         y = 50
         x += 30
-        previousS = s
 
     testLabel = tk.Label(frame,
                             text="Page Fault = " + str(pageFaults))
