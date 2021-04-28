@@ -42,94 +42,12 @@ w.config(font=("Opens Sans",15))
 
 def testButton():
 
-    # newLabel = tk.Label(
-    #     text=inputFrame.get()
-    # )
-    # newLabel.pack()
-    # newLabel.pack_forget()
-    # processList = []
-    # s = []
-    #
-    pageFaults = 0
-    # capacity = int(frameSize.get())
-    #
-    # for i in range(10):
-    #     rand = randint(0, 7)
-    #     processList.insert(i, rand)
-    #
-    # print(processList)
-    # print(variable.get())
-    # print(frameSize.get())
-    # frame = tk.Frame(
-    #     bg="grey",
-    #     width=800,
-    #     height=400
-    # )
-    # frame.place(y=100)
-    # for widgets in frame.winfo_children():
-    #     widgets.destroy()
-    # y=50
-    # x=10
-    # for label in range(len(frame.winfo_children())):
-    #     frame.winfo_children(label).place_forget()
-    # testLabel = tk.Label(frame,
-    #                      text="process list = " + str(processList))
-    # testLabel.place(x=200, y=10)
-    # testLabel.config(font=("Open Sans",15))
     if(variable.get() == "FIFO"):
         FIFO()
     elif(variable.get() == "OPT"):
         OPT()
     else:
         LRU()
-    # for i in processList:
-    #
-    #     # If i is not present in currentPages list
-    #     if i not in s:
-    #
-    #         # Check if the list can hold equal pages
-    #         if (len(s) == int(capacity)):
-    #             s.remove(s[0])
-    #             s.append(i)
-    #             print(s)
-    #
-    #         else:
-    #             s.append(i)
-    #             print(s)
-    #
-    #         # Increment Page faults
-    #         pageFaults += 1
-    #
-    #     # If page is already there in
-    #     # currentPages i.e in Main
-    #     else:
-    #
-    #         # Remove previous index of current page
-    #         s.remove(i)
-    #
-    #         # Now append it, at last index
-    #         s.append(i)
-    #         print(s)
-    #     for process in range(int(frameSize.get())):
-    #         if len(s) < capacity:
-    #             if process < len(s):
-    #                 testLabel = tk.Label(frame,
-    #                                      text="[" + str(s[process]) + "]")
-    #                 testLabel.place(x=x, y=y)
-    #                 y += 20
-    #             else:
-    #                 testLabel = tk.Label(frame,
-    #                                      text="[  ]")
-    #                 testLabel.place(x=x, y=y)
-    #                 y += 20
-    #         else:
-    #             testLabel = tk.Label(frame,
-    #                                  text="[" + str(s[process]) + "]")
-    #             testLabel.place(x=x, y=y)
-    #             y += 20
-    #     # time.sleep(0.5)
-    #     y = 50
-    #     x += 30
 
 def OPT():
     pageAddressing = []
@@ -138,11 +56,14 @@ def OPT():
     pivot = 0
     processList = []
     pageFaults = 0
+    flag = False
+    popFlag = False
+    previousS = []
 
     frame = tk.Frame(
         bg="grey",
-        width=800,
-        height=400
+        width=810,
+        height=410
     )
     frame.place(y=100)
     for widgets in frame.winfo_children():
@@ -172,36 +93,61 @@ def OPT():
             if (x == 0):
                 s.pop(0)
                 pageFaults += 1
+                flag = True
+                popFlag = True
+            else:
+                flag = False
             pivot = int(capacity) - 6
         if (len(s) < int(capacity)):
             if (x == 0):
                 s.insert(pivot, i)
                 pivot = pivot + 1
-                for process in range(int(frameSize.get())):
-                    if len(s) < capacity:
-                        if process < len(s):
-                            testLabel = tk.Label(frame,
-                                                 text="[" + str(s[process]) + "]")
-                            testLabel.place(x=X, y=y)
-                            y += 20
-                        else:
-                            testLabel = tk.Label(frame,
-                                                 text="[  ]")
-                            testLabel.place(x=X, y=y)
-                            y += 20
-                    else:
-                        testLabel = tk.Label(frame,
-                                             text="[" + str(s[process]) + "]")
-                        testLabel.place(x=X, y=y)
-                        y += 20
-                    # time.sleep(0.5)
-                y = 50
-                X += 30
+                if popFlag:
+                    print("check")
+                    flag = True
+                else:
+                    print("here")
+                    print(s)
+                    flag = True
+                    pageFaults += 1
+            else:
+                flag = False
+
+        for process in range(int(frameSize.get())):
+            if len(s) < capacity:
+                if process < len(s):
+                    testLabel = tk.Label(frame,
+                                            text="[" + str(s[process]) + "]")
+                    testLabel.place(x=X, y=y)
+                    y += 20
+                else:
+                    testLabel = tk.Label(frame,
+                                            text="[  ]")
+                    testLabel.place(x=X, y=y)
+                    y += 20
+            else:
+                testLabel = tk.Label(frame,
+                                    text="[" + str(s[process]) + "]")
+                testLabel.place(x=X, y=y)
+                y += 20
+                # time.sleep(0.5)
+        if flag:
+            testLabel = tk.Label(frame,
+                            text="M ")
+            testLabel.place(x=X, y=y)
+        else:
+            testLabel = tk.Label(frame,
+                                 text="H  ")
+            testLabel.place(x=X, y=y)
+        y = 50
+        X += 30
         # print(s)
         testLabel = tk.Label(frame,
                              text="Page Fault = " + str(pageFaults))
         testLabel.place(x=300, y=200)
         testLabel.config(font=("Open Sans", 15))
+        previousS = s
+
 
 def FIFO():
     pageAddressing = []
@@ -210,6 +156,8 @@ def FIFO():
     s = []
     pivot = 0
     pageFaults = 0
+    flag = False
+    popFlag = False
 
     for i in range(10):
         rand = randint(0, 7)
@@ -217,8 +165,8 @@ def FIFO():
 
     frame = tk.Frame(
         bg="grey",
-        width=800,
-        height=400
+        width=810,
+        height=410
     )
     frame.place(y=100)
     for widgets in frame.winfo_children():
@@ -243,32 +191,51 @@ def FIFO():
             # print(x == 0)
             if x == 0:
                 s.pop(0)
-            pageFaults += 1
+                pageFaults += 1
             pivot = int(capacity) - 1
+            flag = True
+            popFlag = True
+        else:
+            flag = False
         if len(s) < int(capacity):
             if (x == 0):
                 s.insert(pivot, i)
                 pivot = pivot + 1
-                for process in range(int(frameSize.get())):
-                    if len(s) < capacity:
-                        if process < len(s):
-                            testLabel = tk.Label(frame,
-                                                 text="[" + str(s[process]) + "]")
-                            testLabel.place(x=X, y=y)
-                            y += 20
-                        else:
-                            testLabel = tk.Label(frame,
-                                                 text="[  ]")
-                            testLabel.place(x=X, y=y)
-                            y += 20
-                    else:
-                        testLabel = tk.Label(frame,
-                                             text="[" + str(s[process]) + "]")
-                        testLabel.place(x=X, y=y)
-                        y += 20
-                    # time.sleep(0.5)
-                y = 50
-                X += 30
+                if popFlag:
+                    flag = False
+                else:
+                    flag = False
+                    pageFaults += 1
+            else:
+                flag = True
+        for process in range(int(frameSize.get())):
+            if len(s) < capacity:
+                if process < len(s):
+                    testLabel = tk.Label(frame,
+                                            text="[" + str(s[process]) + "]")
+                    testLabel.place(x=X, y=y)
+                    y += 20
+                else:
+                    testLabel = tk.Label(frame,
+                                        text="[  ]")
+                    testLabel.place(x=X, y=y)
+                    y += 20
+            else:
+                testLabel = tk.Label(frame,
+                                    text="[" + str(s[process]) + "]")
+                testLabel.place(x=X, y=y)
+                y += 20
+                # time.sleep(0.5)
+            if flag:
+                testLabel = tk.Label(frame,
+                                     text="H  ")
+                testLabel.place(x=X, y=y)
+            else:
+                testLabel = tk.Label(frame,
+                                     text="M ")
+                testLabel.place(x=X, y=y)
+        y = 50
+        X += 30
         # print(s)
     testLabel = tk.Label(frame,
                          text="Page Fault = " + str(pageFaults))
@@ -281,6 +248,8 @@ def FIFO():
 def LRU():
     processList = []
     s = []
+    flag = False
+    previousS = []
 
     pageFaults = 0
     capacity = int(frameSize.get())
@@ -294,8 +263,8 @@ def LRU():
     # print(frameSize.get())
     frame = tk.Frame(
         bg="grey",
-        width=800,
-        height=400
+        width=810,
+        height=410
     )
     frame.place(y=100)
     for widgets in frame.winfo_children():
@@ -323,13 +292,12 @@ def LRU():
             if (len(s) == int(capacity)):
                 s.remove(s[0])
                 s.append(i)
-                print(s)
 
             else:
                 s.append(i)
-                print(s)
 
             # Increment Page faults
+            flag = True
             pageFaults += 1
 
         # If page is already there in
@@ -338,10 +306,9 @@ def LRU():
 
             # Remove previous index of current page
             s.remove(i)
-
+            flag = False
             # Now append it, at last index
             s.append(i)
-            print(s)
         for process in range(int(frameSize.get())):
             if len(s) < capacity:
                 if process < len(s):
@@ -360,8 +327,19 @@ def LRU():
                 testLabel.place(x=x, y=y)
                 y += 20
         # time.sleep(0.5)
+            if flag:
+                testLabel = tk.Label(frame,
+                                     text="M ")
+                testLabel.place(x=x, y=y)
+            else:
+                testLabel = tk.Label(frame,
+                                     text="H  ")
+                testLabel.place(x=x, y=y)
+
         y = 50
         x += 30
+        previousS = s
+
     testLabel = tk.Label(frame,
                             text="Page Fault = " + str(pageFaults))
     testLabel.place(x=300, y=200)
@@ -376,4 +354,5 @@ runButton = tk.Button(
 runButton.place(x=700, y=50)
 runButton.config(font=("Open Sans", 10))
 
+root.resizable(width=False, height=False)
 root.mainloop()
